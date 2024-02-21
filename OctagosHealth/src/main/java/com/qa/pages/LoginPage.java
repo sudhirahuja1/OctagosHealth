@@ -16,14 +16,7 @@ public class LoginPage {
 	    public static String SLOGAN2 = "Healthcare Analytics.";
 	    public static String SLOGAN3 = "Platform Integration.";
 
-	   // public WebDriver driver;
-
-	    //       [FindsBy(How = How.XPath, Using = "//*[@formcontrolname='email']")]
-	    //       private IWebElement txtusername { get; set; }
-
-	    @FindBy(how = How.CLASS_NAME, using = "classname")
-	    private WebElement singlecriterion;
-	    
+    
 	    @FindBy(id="username")
 	    private static WebElement txtusername;
 	    
@@ -32,27 +25,7 @@ public class LoginPage {
 	    
 	    @FindBy(xpath="//button[contains(text(),'Continue')]")
 	    private static WebElement btnContinue;
-		/*
-		 * [FindsBy(How = How.Id, Using = "username")] private IWebElement txtusername {
-		 * get; set; }
-		 */
-
-//	    [FindsBy(How = How.Id, Using = "password")]
-//	    private IWebElement txtpassword { get; set; }
-//
-//	    [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Continue')]")]
-//	    private IWebElement btnContinue { get; set; }
-
-//	    [FindsBy(How = How.XPath, Using = "//button[@type='submit']")]
-//	    private IWebElement btnsubmitt { get; set; }
-//
-//	    [FindsBy(How = How.XPath, Using = "//div[@class='fw-bold']")]
-//	    private IWebElement errormessage { get; set; }
-//
-//	    [FindsBy(How = How.CssSelector, Using = ".alert-danger")]
-//	    private IWebElement ErrorMessage { get; set; }
-
-
+		
 
 	    public LoginPage(WebDriver driver)
 	    {

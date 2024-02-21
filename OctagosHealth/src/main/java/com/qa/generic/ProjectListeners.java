@@ -30,14 +30,14 @@ public class ProjectListeners implements ITestListener, WebDriverEventListener {
 	public static int iPassCount=0;
 	public static int iFailCount=0;
 	public static int iSkipCount=0;
-	Logger nomismaLog;
+	Logger OctagosLog;
 	long startTime, stopTime;
 	
 	public ProjectListeners() {
 		DateFormat dateFormat= new SimpleDateFormat("yy_MM_dd_hh_mm_ss");
 		Date date = new Date();
 		System.setProperty("LongTimeDate", dateFormat.format(date));
-		nomismaLog= Logger.getLogger(this.getClass());
+		OctagosLog= Logger.getLogger(this.getClass());
 		
 		//or
 		//actiLog= Logger.getLogger(MyProjectListeners.class);
@@ -45,37 +45,37 @@ public class ProjectListeners implements ITestListener, WebDriverEventListener {
 	
 	//ITestListener
 	
-		//@Override
+		@Override
 		public void onFinish(ITestContext arg0) {
 			// TODO Auto-generated method stub
 		stopTime=System.currentTimeMillis();
-		nomismaLog.info("Test Suite execution finished: "+new Timestamp(new Date().getTime()));
-		nomismaLog.info("Total time for test suite execution: "+(double)(stopTime-startTime)/1000+"seconds");
+		OctagosLog.info("Test Suite execution finished: "+new Timestamp(new Date().getTime()));
+		OctagosLog.info("Total time for test suite execution: "+(double)(stopTime-startTime)/1000+"seconds");
 		}
 		
 		//ITestListener
-		//@Override
+		@Override
 		public void onStart(ITestContext arg0) {
 			// TODO Auto-generated method stub
 			startTime=System.currentTimeMillis();
 			PropertyConfigurator.configure("log4j.properties");
-			nomismaLog.info("Test Suite Execution started: "+new Timestamp(new Date().getTime()));
+			OctagosLog.info("Test Suite Execution started: "+new Timestamp(new Date().getTime()));
 		}
 		
 		//ITestListener
-		//@Override
+		@Override
 		public void onTestFailedButWithinSuccessPercentage(ITestResult arg0) {
 			// TODO Auto-generated method stub
-			nomismaLog.info("Test failed within success percentage");
+			OctagosLog.info("Test failed within success percentage");
 		}
 		
 		//ITestListener
-		//@Override
+		@Override
 		public void onTestFailure(ITestResult result) {
 			// TODO Auto-generated method stub
 			iFailCount++;
 			System.out.println("Test Failure:"+ iFailCount);
-			nomismaLog.info("Test has been failed");
+			OctagosLog.info("Test has been failed");
 			Object object = result.getInstance();
 			BaseLib obj= (BaseLib) object;
 			//OR
@@ -96,28 +96,28 @@ public class ProjectListeners implements ITestListener, WebDriverEventListener {
 		}
 		
 		//ITestListener
-		//@Override
+		@Override
 		public void onTestSkipped(ITestResult result) {
 			// TODO Auto-generated method stub
 			iSkipCount++;
 			System.out.println("Test Skipped: "+iSkipCount);
-			nomismaLog.info("Test has been skipped: "+result.getName());
+			OctagosLog.info("Test has been skipped: "+result.getName());
 		}
 		
 		//ITestListener
-		//@Override
+		@Override
 		public void onTestStart(ITestResult arg0) {
 			// TODO Auto-generated method stub
-			nomismaLog.info("Test execution has been started: "+new Timestamp(new Date().getTime()));
+			OctagosLog.info("Test execution has been started: "+new Timestamp(new Date().getTime()));
 		}
 		
 		//ITestListener
-		//@Override
+		@Override
 		public void onTestSuccess(ITestResult result) {
 			// TODO Auto-generated method stub
 			iPassCount++;
 			System.out.println("Test Pass: "+iPassCount);
-			nomismaLog.info("TestScript Name: '"+result.getName()+"'  /Status--->Pass :)");
+			OctagosLog.info("TestScript Name: '"+result.getName()+"'  /Status--->Pass :)");
 		}
 		
 		//WebDriverEventListener
@@ -182,7 +182,7 @@ public class ProjectListeners implements ITestListener, WebDriverEventListener {
 		}
 		
 		//WebDriverEventListener
-		//@Override
+		@Override
 		public void beforeFindBy(By by, WebElement ele, WebDriver driver) {
 			// TODO Auto-generated method stub
 			System.out.println("Trying to find: "+by);
@@ -217,11 +217,11 @@ public class ProjectListeners implements ITestListener, WebDriverEventListener {
 		}
 		
 		//WebDriverEventListener
-		//@Override
+		@Override
 		public void onException(Throwable t, WebDriver arg1) {
 			// TODO Auto-generated method stub
-			nomismaLog.fatal("Execution interrupted...");
-			nomismaLog.fatal(t.getMessage());
+			OctagosLog.fatal("Execution interrupted...");
+			OctagosLog.fatal(t.getMessage());
 		}
 
 		//@Override
